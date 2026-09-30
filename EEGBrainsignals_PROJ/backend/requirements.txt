@@ -1,0 +1,8 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+numpy>=1.26
+scipy>=1.12
+# torch is optional — API falls back to NumPy inference if missing.
+# Uncomment to enable the full EEG-TCFNet torch graph:
+# torch>=2.2

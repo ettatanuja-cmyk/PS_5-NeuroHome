@@ -1,0 +1,4 @@
+# Base-paper model checkpoints live here (created by backend/train.py).
+#   eeg_tcfnet.pth, eeg_tcnet_lstm.pth, eeg_tcnet.pth, lenet.pth (.pth state_dicts)
+#   traditional_ml.pkl (sklearn bundle: logreg + svm + mlp + scaler)
+# The API auto-loads them; each model also honors a <MODEL_ID>_CKPT env override.

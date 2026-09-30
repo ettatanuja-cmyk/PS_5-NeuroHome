@@ -1,0 +1,9 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+numpy>=1.26
+scipy>=1.12
+torch>=2.2
+# NOTE: traditional ML baselines are pure-NumPy (no scikit-learn),
+# because sklearn's native extensions are blocked by Windows App Control
+# on some machines (same reason scipy needs the python.org build there).

@@ -1,0 +1,32 @@
+# EEG Smart Home Control — full stack (FastAPI model zoo + React dashboard).
+# Run: docker compose up --build
+# App: http://localhost:5173   API: http://localhost:8000/docs
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # persist retrained checkpoints outside the image
+      - ./backend/app/models/weights:/code/backend/app/models/weights
+    environment:
+      - EEG_TCFNET_CKPT=/code/backend/app/models/weights/eeg_tcfnet.pth
+      - EEG_TCNET_LSTM_CKPT=/code/backend/app/models/weights/eeg_tcnet_lstm.pth
+      - EEG_TCNET_CKPT=/code/backend/app/models/weights/eeg_tcnet.pth
+      - LENET_CKPT=/code/backend/app/models/weights/lenet.pth
+      - LOGISTIC_REGRESSION_CKPT=/code/backend/app/models/weights/traditional_ml.pkl
+      - SVM_CKPT=/code/backend/app/models/weights/traditional_ml.pkl
+      - MLP_CKPT=/code/backend/app/models/weights/traditional_ml.pkl
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend

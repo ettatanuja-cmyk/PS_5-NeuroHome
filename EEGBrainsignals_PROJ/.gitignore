@@ -1,0 +1,41 @@
+# Node
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+*.local
+
+# Vite
+*.tsbuildinfo
+frontend/*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Models / large binaries (uncomment if your .npz/.pt gets >100MB)
+# backend/models/*.npz
+# *.pt
+# *.pth
+
+# Dataset is 3.9GB - DO NOT push to GitHub (100MB/file limit)
+Home-Appliance-Control-Dataset-main/
+*.csv
+*.edf
+*.fif
+*.zip
+*.tar.gz
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Env / secrets
+.env
+.env.*
